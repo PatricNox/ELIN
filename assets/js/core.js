@@ -13,7 +13,8 @@ const btn     = document.querySelector('.btn');
 const date    = document.querySelector('#date');
 const key     = document.querySelector('.hideKey');
 const options = document.querySelector('.bootstrap-iso');
-let   device  = null;
+let device  = null;
+let timer;
 
 /* Variables 
  ******************/
@@ -27,11 +28,23 @@ function getDevice(dimension) {
     } else {
         device = "PHONE";
     }
-  }
+}
   
   var dimension = window.matchMedia("(min-width: 700px)")
   getDevice(dimension) // Call listener function at run time
   dimension.addListener(getDevice) // Attach listener function on state changes
+
+  // Put chosen date into our timer, wooooOOoOoO!
+  btn.addEventListener('click', (e) => {
+    e.preventDefault(); // It's a form, don't execute action.
+    startTimer(parseDate(date.value));
+})
+
+// parse a date in yyyy-mm-dd format
+function parseDate(input) {
+    var parts = input.match(/(\d+)/g);
+    return new Date(parts[2], parts[0]-1, parts[1]); // months are 0-based
+}
 
 /* Let's programme! 
  ******************/
@@ -45,11 +58,6 @@ $(document).ready(function(){
     };
     date_input.datepicker(options);
   })
-
-btn.addEventListener('click', (e) => {
-    e.preventDefault();
-    console.log(date.value);
-})
 
 key.addEventListener('click', (e) => {
     // Delcare state
@@ -76,33 +84,39 @@ key.addEventListener('click', (e) => {
 
 /** Countdown..er?  **/
 /*********************/
-function startTimer(duration) {
-    display = document.querySelector('#counter');
-    var start = Date.now(),
-        diff,
-        minutes,
-        seconds;
-    function timer() {
-        // get the number of seconds that have elapsed since 
-        // startTimer() was called
-        diff = duration - (((Date.now() - start) / 1000) | 0);
 
-        // does the same job as parseInt truncates the float
-        minutes = (diff / 60) | 0;
-        seconds = (diff % 60) | 0;
+var compareDate = new Date();
+compareDate.setDate(compareDate.getDate() + 7); //just for this demo today + 7 days
 
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
+function startTimer(EndDate) {
+    clearInterval(timer);
+    timer = setInterval(function() {
+        timeBetweenDates(EndDate);
+      }, 1000);
+}
 
-        display.textContent = minutes + ":" + seconds; 
+function timeBetweenDates(toDate) {
+    let now = new Date(); // Reset previous timer, if any.
+    let difference = toDate.getTime() - now.getTime();
 
-        if (diff <= 0) {
-            // add one second so that the count down starts at the full duration
-            start = Date.now() + 1000;
-        }
-    };
+    if (difference <= 0) {
+        // Timer done.
+        clearInterval(timer);
+    } 
+    
+    else {
+        var seconds = Math.floor(difference / 1000);
+        var minutes = Math.floor(seconds / 60);
+        var hours = Math.floor(minutes / 60);
+        var days = Math.floor(hours / 24);
 
-    // we don't want to wait a full second before the timer starts
-    timer();
-    setInterval(timer, 1000);
+        hours   %= 24;
+        minutes %= 60;
+        seconds %= 60;
+
+        $("#days").text(days);
+        $("#hours").text(hours);
+        $("#minutes").text(minutes);
+        $("#seconds").text(seconds);
+    }
 }
