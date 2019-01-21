@@ -11,6 +11,7 @@
  ******************/
 const btn     = document.querySelector('.btn');
 const date    = document.querySelector('#date');
+const counter = document.querySelector('#timer');
 const key     = document.querySelector('.hideKey');
 const options = document.querySelector('.bootstrap-iso');
 let device  = null;
@@ -90,6 +91,7 @@ compareDate.setDate(compareDate.getDate() + 7); //just for this demo today + 7 d
 
 function startTimer(EndDate) {
     clearInterval(timer);
+    DisplayTimer(true);
     timer = setInterval(function() {
         timeBetweenDates(EndDate);
       }, 1000);
@@ -102,6 +104,7 @@ function timeBetweenDates(toDate) {
     if (difference <= 0) {
         // Timer done.
         clearInterval(timer);
+        DisplayTimer(false);
     } 
     
     else {
@@ -119,4 +122,20 @@ function timeBetweenDates(toDate) {
         $("#minutes").text(minutes);
         $("#seconds").text(seconds);
     }
+}
+
+
+/** Hide timer if nothing to count */
+function DisplayTimer(bool) {
+    setTimeout(() => {
+        if (!bool) {
+            counter.style.marginLeft = "60%";
+            counter.style.opacity = 0;
+            return;
+        }
+      
+        counter.style.marginLeft = "0";
+        counter.style.opacity = 1;
+    }, 250);
+
 }
