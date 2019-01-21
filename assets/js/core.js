@@ -13,6 +13,7 @@ const btn     = document.querySelector('.btn');
 const date    = document.querySelector('#date');
 const key     = document.querySelector('.hideKey');
 const options = document.querySelector('.bootstrap-iso');
+let   device  = null;
 
 /* Variables 
  ******************/
@@ -20,6 +21,17 @@ let OptionIsOpen = false;
 
 /* Helper functions 
  ******************/
+function getDevice(dimension) {
+    if (dimension.matches) { // If media query matches
+        device = "COMPUTER";
+    } else {
+        device = "PHONE";
+    }
+  }
+  
+  var dimension = window.matchMedia("(min-width: 700px)")
+  getDevice(dimension) // Call listener function at run time
+  dimension.addListener(getDevice) // Attach listener function on state changes
 
 /* Let's programme! 
  ******************/
@@ -44,8 +56,20 @@ key.addEventListener('click', (e) => {
     OptionIsOpen = !OptionIsOpen;
     let rotateValue = (OptionIsOpen) ? "rotate(180deg)" : "rotate(0)";
 
+    // Declare margin depending on device
+    let percent = 0;
+    switch (device) {
+        case "COMPUTER":
+             percent = "-10%"
+            break;
+        case "PHONE":
+        default:
+             percent = "-40%"
+            break;
+    }
+
     // Actipn
-    (OptionIsOpen) ? options.style.marginTop = "0" : options.style.marginTop = "-10%";
+    (OptionIsOpen) ? options.style.marginTop = "0" : options.style.marginTop = percent;
     key.style.transform = rotateValue;
 
 })
