@@ -24,16 +24,13 @@ heart {color: red;}
 .form-control {width: 200px;}
 /* Pick a Date Box */
 .bootstrap-iso {
-    background: #7d6c6c;
+    background: #a50348;
     width: 100%;
     padding: 25px;
     color: white;
-    margin-top: -40%;
+    margin-top: -7.5rem;
 }
 @media (min-width: 768px) { 
-    .bootstrap-iso {
-        margin-top: -10%;
-    }
     .display-5 {
         font-size: 36px !important;
     }
@@ -79,4 +76,9 @@ heart {color: red;}
     top:0;
     left:0;
     z-index: -1;
+  }
+
+  .jumbotron {
+    box-shadow: inset 1px 1px 9px #ff29ef;
+    border-radius: 4%;
   }

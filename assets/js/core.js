@@ -55,20 +55,8 @@ function ToggleSettingsBox() {
     OptionIsOpen = !OptionIsOpen;
     let rotateValue = (OptionIsOpen) ? "rotate(180deg)" : "rotate(0)";
 
-    // Declare margin depending on device
-    let percent = 0;
-    switch (device) {
-        case "COMPUTER":
-            percent = "-10%"
-            break;
-        case "PHONE":
-        default:
-            percent = "-40%"
-            break;
-    }
-
     // Actipn
-    (OptionIsOpen) ? options.style.marginTop = "0" : options.style.marginTop = percent;
+    (OptionIsOpen) ? options.style.marginTop = "0" : options.style.marginTop = "-7.5rem";
     key.style.transform = rotateValue;
 }
 
