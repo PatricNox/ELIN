@@ -24,7 +24,7 @@ let OptionIsOpen = false;
 /* Helper functions 
  ******************/
 function getDevice(dimension) {
-    if (dimension.matches) { // If media query matches
+    if (dimension.matches) { // If media query matches.
         device = "COMPUTER";
     } else {
         device = "PHONE";
@@ -32,8 +32,8 @@ function getDevice(dimension) {
 }
   
   var dimension = window.matchMedia("(min-width: 700px)")
-  getDevice(dimension) // Call listener function at run time
-  dimension.addListener(getDevice) // Attach listener function on state changes
+  getDevice(dimension) // Call listener function at run time.
+  dimension.addListener(getDevice) // Attach listener function on state changes.
 
   // Put chosen date into our timer, wooooOOoOoO!
   btn.addEventListener('click', (e) => {
@@ -46,12 +46,12 @@ function getDevice(dimension) {
 // parse a date in yyyy-mm-dd format
 function parseDate(input) {
     var parts = input.match(/(\d+)/g);
-    return new Date(parts[2], parts[0]-1, parts[1]); // months are 0-based
+    return new Date(parts[2], parts[0]-1, parts[1]); // months are 0-based.
 }
 
 // Toggler for settingbox
 function ToggleSettingsBox() {
-    // Delcare state
+    // Declare state
     OptionIsOpen = !OptionIsOpen;
     let rotateValue = (OptionIsOpen) ? "rotate(180deg)" : "rotate(0)";
 
@@ -102,7 +102,7 @@ key.addEventListener('click', (e) => {
 /*********************/
 
 var compareDate = new Date();
-compareDate.setDate(compareDate.getDate() + 7); //just for this demo today + 7 days
+compareDate.setDate(compareDate.getDate() + 7);
 
 function startTimer(EndDate) {
     DisplayTimer(true);
@@ -120,7 +120,7 @@ function timeBetweenDates(toDate) {
     let difference = toDate.getTime() - now.getTime();
 
     if (difference <= 0) {
-        // Timer done.
+        // Timer done, reset!
         clearTimer(timer);
         DisplayTimer(false);
     } 
@@ -158,7 +158,7 @@ function DisplayTimer(bool) {
 
 }
 
-/** Check if existing counter */
+/** Check if there is an existing counter */
 window.onload = function() {
     if (document.cookie) {
         startTimer(parseDate(document.cookie));
