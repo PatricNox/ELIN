@@ -47,6 +47,7 @@
         </div>
     </div>
 </div>
+<canvas id="canvas"></canvas>
 <script src="assets/js/core.js"></script>    
 </body>
 </html>

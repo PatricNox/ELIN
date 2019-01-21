@@ -1,7 +1,7 @@
 body {
     padding: 0;
     margin: 0;
-    background: #561d01;
+    background: #B7004E;
 }
 
 * {
@@ -72,4 +72,11 @@ heart {color: red;}
   }
   #timer span:first-child {
     margin-left: 0;
+  }
+
+  #canvas {
+    position:fixed; 
+    top:0;
+    left:0;
+    z-index: -1;
   }
