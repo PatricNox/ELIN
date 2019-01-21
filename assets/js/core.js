@@ -39,12 +39,36 @@ function getDevice(dimension) {
   btn.addEventListener('click', (e) => {
     e.preventDefault(); // It's a form, don't execute action.
     startTimer(parseDate(date.value));
+    ToggleSettingsBox();
 })
 
 // parse a date in yyyy-mm-dd format
 function parseDate(input) {
     var parts = input.match(/(\d+)/g);
     return new Date(parts[2], parts[0]-1, parts[1]); // months are 0-based
+}
+
+// Toggler for settingbox
+function ToggleSettingsBox() {
+    // Delcare state
+    OptionIsOpen = !OptionIsOpen;
+    let rotateValue = (OptionIsOpen) ? "rotate(180deg)" : "rotate(0)";
+
+    // Declare margin depending on device
+    let percent = 0;
+    switch (device) {
+        case "COMPUTER":
+                percent = "-10%"
+            break;
+        case "PHONE":
+        default:
+                percent = "-40%"
+            break;
+    }
+
+    // Actipn
+    (OptionIsOpen) ? options.style.marginTop = "0" : options.style.marginTop = percent;
+    key.style.transform = rotateValue;
 }
 
 /* Let's programme! 
@@ -61,26 +85,7 @@ $(document).ready(function(){
   })
 
 key.addEventListener('click', (e) => {
-    // Delcare state
-    OptionIsOpen = !OptionIsOpen;
-    let rotateValue = (OptionIsOpen) ? "rotate(180deg)" : "rotate(0)";
-
-    // Declare margin depending on device
-    let percent = 0;
-    switch (device) {
-        case "COMPUTER":
-             percent = "-10%"
-            break;
-        case "PHONE":
-        default:
-             percent = "-40%"
-            break;
-    }
-
-    // Actipn
-    (OptionIsOpen) ? options.style.marginTop = "0" : options.style.marginTop = percent;
-    key.style.transform = rotateValue;
-
+    ToggleSettingsBox();
 })
 
 /** Countdown..er?  **/
