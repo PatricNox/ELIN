@@ -38,7 +38,8 @@ function getDevice(dimension) {
   // Put chosen date into our timer, wooooOOoOoO!
   btn.addEventListener('click', (e) => {
     e.preventDefault(); // It's a form, don't execute action.
-    startTimer(parseDate(date.value));
+    clearTimer(timer);
+    startTimer(date.value);
     ToggleSettingsBox();
 })
 
@@ -71,6 +72,15 @@ function ToggleSettingsBox() {
     key.style.transform = rotateValue;
 }
 
+function getCookie(cname) {
+    return(document.cookie.split('=')[1]);
+  }
+  
+function clearTimer(timer) {
+    clearInterval(timer);
+    document.cookie = 'timer=; Max-Age=-99999999;';  
+}
+
 /* Let's programme! 
  ******************/
 $(document).ready(function(){
@@ -95,7 +105,6 @@ var compareDate = new Date();
 compareDate.setDate(compareDate.getDate() + 7); //just for this demo today + 7 days
 
 function startTimer(EndDate) {
-    clearInterval(timer);
     DisplayTimer(true);
     timer = setInterval(function() {
         timeBetweenDates(EndDate);
@@ -103,12 +112,16 @@ function startTimer(EndDate) {
 }
 
 function timeBetweenDates(toDate) {
+    if (! document.cookie)
+        document.cookie = "timer="+toDate+"; expires="+toDate+" path=/;";
+    console.log(getCookie(timer))
+    toDate = parseDate(getCookie(timer));
     let now = new Date(); // Reset previous timer, if any.
     let difference = toDate.getTime() - now.getTime();
 
     if (difference <= 0) {
         // Timer done.
-        clearInterval(timer);
+        clearTimer(timer);
         DisplayTimer(false);
     } 
     
@@ -144,3 +157,9 @@ function DisplayTimer(bool) {
     }, 250);
 
 }
+
+/** Check if existing counter */
+window.onload = function() {
+    if (document.cookie)
+        startTimer(parseDate(document.cookie));
+  };
