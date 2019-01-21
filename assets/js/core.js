@@ -160,6 +160,8 @@ function DisplayTimer(bool) {
 
 /** Check if existing counter */
 window.onload = function() {
-    if (document.cookie)
+    if (document.cookie) {
         startTimer(parseDate(document.cookie));
-  };
+        date.value = (getCookie(timer));
+    }
+};
