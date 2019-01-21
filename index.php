@@ -37,8 +37,13 @@
 <div class="container">
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
-            <h1 class="display-5">Countdown</h1>
-            <p class="lead">hejsan <span id="counter"></span><p>
+            <h1 class="display-5">Countdown  <heart>❤</heart></h1>
+            <div id="timer">
+                <span id="days"></span>days
+                <span id="hours"></span>hours
+                <span id="minutes"></span>minutes
+                <span id="seconds"></span>seconds
+            </div>
         </div>
     </div>
 </div>
