@@ -34,4 +34,18 @@ heart {color: red;}
     .bootstrap-iso {
         margin-top: -10%;
     }
+    .display-5 {
+        font-size: 36px !important;
+    }
+}
+
+/* Content 
+**********/
+.container {
+    margin-top: 3em;
+}
+
+.display-5 {
+    font-family: cursive;
+    font-size: 20px;
 }

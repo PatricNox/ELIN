@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
+ <!-- Settings for options bar -->
 <div class="bootstrap-iso">
  <div class="container-fluid">
   <div class="row">
@@ -30,6 +31,16 @@
   </div>    
  </div>
 <div class="hideKey">V</div>
+</div>
+
+<!-- Date Countdown -->
+<div class="container">
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-5">Countdown</h1>
+            <p class="lead">hejsan <span id="counter"></span><p>
+        </div>
+    </div>
 </div>
 <script src="assets/js/core.js"></script>    
 </body>
