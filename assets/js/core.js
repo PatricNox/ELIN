@@ -67,8 +67,8 @@ function getCookie(cname) {
 
 function clearTimer(timer) {
     clearInterval(timer);
-    date.value = "";
-    document.cookie = 'timer=; Max-Age=-99999999;';
+    if (document.cookie) // Only kill cookie if exists
+        document.cookie = 'timer=; Max-Age=-99999999;';
 }
 
 /* Let's programme! 
