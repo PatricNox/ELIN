@@ -8,6 +8,8 @@ body {
     transition: all 0.25s ease;
 }
 
+/* Settings box 
+****************/
 heart {color: red;}
 .hideKey {
     float: right; 
@@ -23,8 +25,13 @@ heart {color: red;}
 /* Pick a Date Box */
 .bootstrap-iso {
     background: #7d6c6c;
-    width: 25%;
+    width: 100%;
     padding: 25px;
     color: white;
-    margin-top: -10%;
+    margin-top: -40%;
+}
+@media (min-width: 768px) { 
+    .bootstrap-iso {
+        margin-top: -10%;
+    }
 }
