@@ -10,6 +10,7 @@
 /* Declarations 
  ******************/
 const btn      = document.querySelector('.btn');
+const reset    = document.querySelector('.btn-danger');
 const date     = document.querySelector('#date');
 const counter  = document.querySelector('#timer');
 const key      = document.querySelector('.hideKey');
@@ -66,6 +67,7 @@ function getCookie(cname) {
 
 function clearTimer(timer) {
     clearInterval(timer);
+    date.value = "";
     document.cookie = 'timer=; Max-Age=-99999999;';
 }
 
@@ -98,6 +100,11 @@ function startTimer(EndDate) {
         timeBetweenDates(EndDate);
     }, 1000);
 }
+
+reset.addEventListener('click', () => {
+    clearTimer(timer);
+    DisplayTimer(false);
+});
 
 function timeBetweenDates(toDate) {
     if (!document.cookie)

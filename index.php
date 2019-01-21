@@ -24,7 +24,8 @@
       <div class="form-group"> <!-- Date input -->
         <label class="control-label" for="date">Pick a Date <heart>❤</heart></label>
         <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text" autocomplete="off"/>
-        <button class="btn btn-primary " name="submit" type="submit">Submit</button>
+        <button class="btn btn-success " name="submit" type="submit">Start</button>
+        <button class="btn btn-danger " name="reset" type="reset">Reset</button>
       </div>
      </form>
     </div>
