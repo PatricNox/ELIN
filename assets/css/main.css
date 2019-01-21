@@ -1,1 +1,30 @@
- 
+body {
+    padding: 0;
+    margin: 0;
+    background: #561d01;
+}
+
+* {
+    transition: all 0.25s ease;
+}
+
+heart {color: red;}
+.hideKey {
+    float: right; 
+    font-size: 24px; 
+    margin-top: 4px;
+    color: red;
+    text-shadow: 1px 1px 6px #000;
+    cursor: pointer;
+    /*transform:rotate(180deg)*/
+} .hideKey::selection {display: none;}
+
+.form-control {width: 200px;}
+/* Pick a Date Box */
+.bootstrap-iso {
+    background: #7d6c6c;
+    width: 25%;
+    padding: 25px;
+    color: white;
+    margin-top: -10%;
+}

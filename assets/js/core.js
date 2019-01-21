@@ -9,8 +9,14 @@
 
 /* Declarations 
  ******************/
-const btn = document.querySelector('.btn');
-const date = document.querySelector('#date');
+const btn     = document.querySelector('.btn');
+const date    = document.querySelector('#date');
+const key     = document.querySelector('.hideKey');
+const options = document.querySelector('.bootstrap-iso');
+
+/* Variables 
+ ******************/
+let OptionIsOpen = false;
 
 /* Helper functions 
  ******************/
@@ -31,4 +37,15 @@ $(document).ready(function(){
 btn.addEventListener('click', (e) => {
     e.preventDefault();
     console.log(date.value);
+})
+
+key.addEventListener('click', (e) => {
+    // Delcare state
+    OptionIsOpen = !OptionIsOpen;
+    let rotateValue = (OptionIsOpen) ? "rotate(180deg)" : "rotate(0)";
+
+    // Actipn
+    (OptionIsOpen) ? options.style.marginTop = "0" : options.style.marginTop = "-10%";
+    key.style.transform = rotateValue;
+
 })

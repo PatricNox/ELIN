@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+    <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
 <div class="bootstrap-iso">
@@ -20,18 +21,15 @@
     <!-- Form code begins -->
     <form method="post">
       <div class="form-group"> <!-- Date input -->
-        <label class="control-label" for="date">Date</label>
-        <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text"/>
-      </div>
-      <div class="form-group"> <!-- Submit button -->
+        <label class="control-label" for="date">Pick a Date <heart>❤</heart></label>
+        <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text" autocomplete="off"/>
         <button class="btn btn-primary " name="submit" type="submit">Submit</button>
       </div>
      </form>
-     <!-- Form code ends --> 
-
     </div>
   </div>    
  </div>
+<div class="hideKey">V</div>
 </div>
 <script src="assets/js/core.js"></script>    
 </body>
